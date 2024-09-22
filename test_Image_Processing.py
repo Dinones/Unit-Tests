@@ -13,7 +13,7 @@ from parameterized import parameterized_class
 
 import sys
 folders = ['../', '../Modules']
-for folder in folders:  sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), folder)))
+for folder in folders: sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), folder)))
 
 from Image_Processing import Image_Processing
 import Constants as CONST
