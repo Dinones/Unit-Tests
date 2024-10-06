@@ -33,14 +33,21 @@ IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Image
         'has_text_box': True,
         'has_life_box': False,
         'has_black_screen': False,
-        'has_white_screen': True, # TODO @dinones should be False?
+        'has_white_screen': False,
     },
     {
         'image_path': os.path.join(IMAGE_DIR, 'Regice_1080p.png'),
         'has_text_box': True,
         'has_life_box': False,
         'has_black_screen': False,
-        'has_white_screen': True, # TODO @dinones should be False?
+        'has_white_screen': False,
+    },
+    {
+        'image_path': os.path.join(IMAGE_DIR, 'white_screen_test1_720p.png'),
+        'has_text_box': False,
+        'has_life_box': False,
+        'has_black_screen': False,
+        'has_white_screen': False,
     },
 ])
 class Test_Control_System(unittest.TestCase): 
