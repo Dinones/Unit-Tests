@@ -16,75 +16,57 @@ folders = ['../', '../Modules']
 for folder in folders: sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), folder)))
 
 from Image_Processing import Image_Processing
-import Constants as CONST
 import Control_System
 
 ###########################################################################################################################
 #################################################     INITIALIZATIONS     #################################################
 ###########################################################################################################################
 
-IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Images'))
+IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Images/swsh'))
 
 ###########################################################################################################################
 
+# Add new tests here
 @parameterized_class([
     {
-        'image_path': os.path.join(IMAGE_DIR, 'Regice_720p.png'),
-        'image_size': (1280, 720),
-        'has_pokemon_name': True,
-        'pokemon_name': 'Regice', # Leave empty if 'has_pokemon_name' is False
-    },
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'Regice_1080p.png'),
-        'image_size': (1920, 1080),
-        'has_pokemon_name': True,
-        'pokemon_name': 'Regice', # Leave empty if 'has_pokemon_name' is False
-    },
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'swsh', 'regirock_encounter_720p.webp'),
-        'image_size': (1280, 720),
-        'has_pokemon_name': True,
-        'pokemon_name': 'Regirock', # Leave empty if 'has_pokemon_name' is False
+        'image_path': os.path.join(IMAGE_DIR, 'regirock_encounter_720p.webp'),
+        'has_swsh_combat_text_box': True,
+        'has_black_screen': False,
+        'has_white_screen': False,
     }
 ])
-class Test_Image_Processing(unittest.TestCase):
+class Test_swsh_Control_System(unittest.TestCase):
     def setUp(self):
         # Ensure the file exists
         self.assertTrue(os.path.exists(self.image_path), f'File not found: {self.image_path}')
 
         # Initialize the ImageProcessor object
         self.image = Image_Processing(self.image_path)
-        self.image.resized_image = None
-
-    #######################################################################################################################
-
-    def test_load_image(self):
-        # Test loading an image
-        self.assertIsNotNone(self.image.original_image, f'Failed to load {self.image_path}')
-
-        size = self.image.original_image.shape[1::-1]
-        self.assertEqual(size, self.image_size, f'Failed to load {self.image_path}')
-
-    #######################################################################################################################
-
-    def test_resize_image(self):
-        # Test resizing an image
         self.image.resize_image()
-        self.assertIsNotNone(self.image.resized_image, 'Failed to resize image')
+    
+    #######################################################################################################################
 
-        size = self.image.resized_image.shape[1::-1]
-        self.assertEqual(size, CONST.MAIN_FRAME_SIZE, 'Failed to resize image')
+    def test_is_swsh_combat_text_box(self):
+        """
+        Test if the combat text box is visible (Grey rectangle at the bottom of the screen)
+        Specific test for Pokémon Sword and Shield
+        """
+        swsh_combat_text_box_visible = Control_System.is_swsh_combat_text_box_visible(self.image)
+        self.assertEqual(self.has_swsh_combat_text_box, swsh_combat_text_box_visible, 'Failed to recognize swsh combat text box')
 
     #######################################################################################################################
 
-    def test_is_pokemon_name_recognized(self):
-        # Test if the pokémon name is recognized correctly
-        # Skip the test if has_pokemon_name is False
-        if not self.has_pokemon_name: self.skipTest("Skipping because 'has_pokemon_name' is False")
+    def test_is_black_screen(self):
+        "Test if the black screen is visible"
+        black_screen_visible = Control_System.is_black_screen_visible(self.image)
+        self.assertEqual(self.has_black_screen, black_screen_visible, 'Failed to recognize black screen')
 
-        self.image.resize_image()
-        pokemon_name = self.image.recognize_pokemon()
-        self.assertEqual(self.pokemon_name, pokemon_name, f'Failed to recognize pokémon name')
+    #######################################################################################################################
+
+    def test_is_white_screen(self):
+        "Test if the white screen is visible"
+        white_screen_visible = Control_System.is_load_fight_white_screen(self.image)
+        self.assertEqual(self.has_white_screen, white_screen_visible, 'Failed to recognize white screen')
 
     #######################################################################################################################
 

@@ -1,1 +1,4 @@
 __pycache__
+
+# Hidden MacOS system file which is automatically created by MacOS systems
+**/.DS_Store
