@@ -84,7 +84,7 @@ class Test_Control_System(unittest.TestCase):
 
     def test_is_load_fight_white_screen(self):
         # Test if the white screen is visible
-        white_screen_visible = Control_System.is_load_fight_white_screen(self.image)
+        white_screen_visible = Control_System.is_white_screen_visible(self.image)
         self.assertEqual(self.has_white_screen, white_screen_visible, 'Failed to recognize white screen')
 
     #######################################################################################################################
