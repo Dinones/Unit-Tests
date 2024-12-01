@@ -1,10 +1,18 @@
+<!-- #################### UNIT TESTS SUBMODULE #################### -->
+
 <h2 id="explanation">
     <img src="https://raw.githubusercontent.com/Dinones/Repository-Images/master/NS%20Shiny%20Hunter/SVG/Star.svg" width="30px" align="top"/>
     ⠀Unit Tests Submodule
 </h2>
 
-<p>This repository is designed to be used as a submodule where I create unit tests for my projects. </p>
+<p>This repository is designed to be used as a submodule where I create unit tests for my projects.</p>
 
+<p>To run unit tests more visual in VS Code, you need to install the Python extension. Then, press <code>Ctrl+Shift+P</code> to open the Command Palette. Type <i>"Python: Configure Tests"</i> and select it. Choose the unittest testing framework, and follow the prompts to configure the test folder and file pattern.</p>
+
+<p>After completing the configuration, a <b>Testing</b> icon will appear in the Activity Bar on the left. If it doesn’t, right-click on the sidebar and enable it.</p>
+
+<!-- #################### HOW TO USE SUBMODULES #################### -->
+⠀
 <h2 id="usage">
     <img src="https://raw.githubusercontent.com/Dinones/Repository-Images/master/NS%20Shiny%20Hunter/SVG/Gear.svg" width="30px" align="top"/>
     ⠀How to Use Submodules
