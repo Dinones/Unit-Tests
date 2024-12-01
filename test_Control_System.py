@@ -32,22 +32,22 @@ IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Image
         'image_path': os.path.join(IMAGE_DIR, 'Regice_720p.png'),
         'has_text_box': True,
         'has_life_box': False,
-        'has_black_screen': False,
-        'has_white_screen': False,
+        'has_load_black_screen': False,
+        'has_load_white_screen': False,
     },
     {
         'image_path': os.path.join(IMAGE_DIR, 'Regice_1080p.png'),
         'has_text_box': True,
         'has_life_box': False,
-        'has_black_screen': False,
-        'has_white_screen': False,
+        'has_load_black_screen': False,
+        'has_load_white_screen': False,
     },
     {
         'image_path': os.path.join(IMAGE_DIR, 'white_screen_test1_720p.png'),
         'has_text_box': False,
         'has_life_box': False,
-        'has_black_screen': False,
-        'has_white_screen': False,
+        'has_load_black_screen': False,
+        'has_load_white_screen': False,
     },
 ])
 class Test_Control_System(unittest.TestCase): 
@@ -71,7 +71,7 @@ class Test_Control_System(unittest.TestCase):
     def test_is_black_screen_visible(self):
         # Test if black screen is visible
         black_screen_visible = Control_System.is_black_screen_visible(self.image)
-        self.assertEqual(self.has_black_screen, black_screen_visible, 'Failed to recognize black screen')
+        self.assertEqual(self.has_load_black_screen, black_screen_visible, 'Failed to recognize black screen')
 
     #######################################################################################################################
 
@@ -84,8 +84,8 @@ class Test_Control_System(unittest.TestCase):
 
     def test_is_load_fight_white_screen(self):
         # Test if the white screen is visible
-        white_screen_visible = Control_System.is_white_screen_visible(self.image)
-        self.assertEqual(self.has_white_screen, white_screen_visible, 'Failed to recognize white screen')
+        white_screen_visible = Control_System.is_load_fight_white_screen_visible(self.image)
+        self.assertEqual(self.has_load_white_screen, white_screen_visible, 'Failed to recognize white screen')
 
     #######################################################################################################################
 
