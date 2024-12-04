@@ -15,6 +15,11 @@ import sys
 folders = ['../', '../Modules']
 for folder in folders: sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), folder)))
 
+# Mock Qt modules to make them optional in the tests
+from unittest.mock import MagicMock
+sys.modules['PyQt5'] = MagicMock()
+sys.modules['PyQt5.QtGui'] = MagicMock()
+
 from Image_Processing import Image_Processing
 import Control_System
 
@@ -46,6 +51,13 @@ IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Image
         'image_path': os.path.join(IMAGE_DIR, 'white_screen_test1_720p.png'),
         'has_text_box': False,
         'has_life_box': False,
+        'has_load_black_screen': False,
+        'has_load_white_screen': False,
+    },
+    {
+        'image_path': os.path.join(IMAGE_DIR, 'Combat_1080p.png'),
+        'has_text_box': False,
+        'has_life_box': True,
         'has_load_black_screen': False,
         'has_load_white_screen': False,
     },
@@ -82,9 +94,9 @@ class Test_Control_System(unittest.TestCase):
 
     #######################################################################################################################
 
-    def test_is_load_fight_white_screen(self):
+    def test_is_white_screen_visible(self):
         # Test if the white screen is visible
-        white_screen_visible = Control_System.is_load_fight_white_screen_visible(self.image)
+        white_screen_visible = Control_System.is_white_screen_visible(self.image)
         self.assertEqual(self.has_load_white_screen, white_screen_visible, 'Failed to recognize white screen')
 
     #######################################################################################################################
