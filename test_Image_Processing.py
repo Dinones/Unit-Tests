@@ -15,6 +15,11 @@ import sys
 folders = ['../', '../Modules']
 for folder in folders: sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), folder)))
 
+# Mock Qt modules to make them optional in the tests
+from unittest.mock import MagicMock
+sys.modules['PyQt5'] = MagicMock()
+sys.modules['PyQt5.QtGui'] = MagicMock()
+
 from Image_Processing import Image_Processing
 import Constants as CONST
 import Control_System
