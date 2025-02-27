@@ -8,6 +8,7 @@ if __name__ == '__main__':
     try: os.chdir(os.path.dirname(__file__))
     except: pass
 
+import json
 import unittest
 from parameterized import parameterized_class
 
@@ -28,40 +29,18 @@ import Control_System
 ###########################################################################################################################
 
 IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Images'))
+TESTS_DATA_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Tests Data/Control_System_Data.json'))
+
+# Load test data, where tests are defined
+with open(TESTS_DATA_FILE, 'r') as file: 
+    TEST_DATA = json.load(file)
+
+for item in TEST_DATA: 
+    item['image_path'] = os.path.join(IMAGE_DIR, item['image_path'])
 
 ###########################################################################################################################
 
-# Add new tests here
-@parameterized_class([
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'Regice_720p.png'),
-        'has_text_box': True,
-        'has_life_box': False,
-        'has_load_black_screen': False,
-        'has_load_white_screen': False,
-    },
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'Regice_1080p.png'),
-        'has_text_box': True,
-        'has_life_box': False,
-        'has_load_black_screen': False,
-        'has_load_white_screen': False,
-    },
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'white_screen_test1_720p.png'),
-        'has_text_box': False,
-        'has_life_box': False,
-        'has_load_black_screen': False,
-        'has_load_white_screen': False,
-    },
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'Combat_1080p.png'),
-        'has_text_box': False,
-        'has_life_box': True,
-        'has_load_black_screen': False,
-        'has_load_white_screen': False,
-    },
-])
+@parameterized_class(TEST_DATA)
 class Test_Control_System(unittest.TestCase): 
     def setUp(self):
         # Ensure the file exists
@@ -70,34 +49,66 @@ class Test_Control_System(unittest.TestCase):
         # Initialize the ImageProcessor object
         self.image = Image_Processing(self.image_path)
         self.image.resize_image()
+
+    #######################################################################################################################
+
+    def test_is_pairing_screen_visible(self):
+        # Test if black screen is visible
+        pairing_screen_visible = Control_System.is_pairing_screen_visible(self.image)
+        self.assertEqual(self.is_pairing_screen_visible, pairing_screen_visible, 'Failed to recognize pairing screen') 
     
     #######################################################################################################################
 
-    def test_text_box_visibility(self):
-        # Test if the text box is visible
-        text_box_visible = Control_System.is_text_box_visible(self.image)
-        self.assertEqual(self.has_text_box, text_box_visible, 'Failed to recognize text box')
+    def test_is_home_screen_visible(self):
+        # Test if black screen is visible
+        home_screen_visible = Control_System.is_home_screen_visible(self.image)
+        self.assertEqual(self.is_home_screen_visible, home_screen_visible, 'Failed to recognize home screen') 
 
     #######################################################################################################################
 
-    def test_is_black_screen_visible(self):
+    def test_is_bdsp_load_screen_visible(self):
+        # Test if black screen is visible
+        bdsp_load_screen_visible = Control_System.is_bdsp_loading_screen_visible(self.image)
+        self.assertEqual(
+            self.is_bdsp_load_white_screen_visible, bdsp_load_screen_visible, 'Failed to recognize BDSP load screen'
+        ) 
+
+    #######################################################################################################################
+
+    def test_is_load_black_screen_visible(self):
         # Test if black screen is visible
         black_screen_visible = Control_System.is_black_screen_visible(self.image)
-        self.assertEqual(self.has_load_black_screen, black_screen_visible, 'Failed to recognize black screen')
+        self.assertEqual(self.is_load_black_screen_visible, black_screen_visible, 'Failed to recognize black load screen')  
+
+    #######################################################################################################################
+
+    def test_is_load_white_screen_visible(self):
+        # Test if the white screen is visible
+        white_screen_visible = Control_System.is_white_screen_visible(self.image)
+        self.assertEqual(self.is_load_white_screen_visible, white_screen_visible, 'Failed to recognize white load screen')
+
+    #######################################################################################################################
+
+    def test_is_overworld_text_box_visible(self):
+        # Test if the overworld text box is visible
+        overworld_text_box_visible = Control_System.is_overworld_text_box_visible(self.image)
+        self.assertEqual(
+            self.is_overworld_text_box_visible, overworld_text_box_visible, 'Failed to recognize overworld text box'
+        )
+
+    #######################################################################################################################
+
+    def test_is_combat_text_box_visible(self):
+        # Test if the combat text box is visible
+        combat_text_box_visible = Control_System.is_combat_text_box_visible(self.image)
+        self.assertEqual(self.is_combat_text_box_visible, combat_text_box_visible, 'Failed to recognize combat text box')
 
     #######################################################################################################################
 
     def test_is_life_box_visible(self):
         # Test if life box is visible
         life_box_visible = Control_System.is_life_box_visible(self.image)
-        self.assertEqual(self.has_life_box, life_box_visible, 'Failed to recognize life box')
-
-    #######################################################################################################################
-
-    def test_is_white_screen_visible(self):
-        # Test if the white screen is visible
-        white_screen_visible = Control_System.is_white_screen_visible(self.image)
-        self.assertEqual(self.has_load_white_screen, white_screen_visible, 'Failed to recognize white screen')
+        self.assertEqual(self.is_life_box_visible, life_box_visible, 'Failed to recognize life box')
 
     #######################################################################################################################
 

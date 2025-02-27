@@ -8,6 +8,7 @@ if __name__ == '__main__':
     try: os.chdir(os.path.dirname(__file__))
     except: pass
 
+import json
 import unittest
 from parameterized import parameterized_class
 
@@ -29,23 +30,18 @@ import Control_System
 ###########################################################################################################################
 
 IMAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Media/Images'))
+TESTS_DATA_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), 'Tests Data/Image_Processing_Data.json'))
+
+# Load test data, where tests are defined
+with open(TESTS_DATA_FILE, 'r') as file: 
+    TEST_DATA = json.load(file)
+
+for item in TEST_DATA: 
+    item['image_path'] = os.path.join(IMAGE_DIR, item['image_path'])
 
 ###########################################################################################################################
 
-@parameterized_class([
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'Regice_720p.png'),
-        'image_size': (1280, 720),
-        'has_pokemon_name': True,
-        'pokemon_name': 'Regice', # Leave empty if 'has_pokemon_name' is False
-    },
-    {
-        'image_path': os.path.join(IMAGE_DIR, 'Regice_1080p.png'),
-        'image_size': (1920, 1080),
-        'has_pokemon_name': True,
-        'pokemon_name': 'Regice', # Leave empty if 'has_pokemon_name' is False
-    },
-])
+@parameterized_class(TEST_DATA)
 class Test_Image_Processing(unittest.TestCase):
     def setUp(self):
         # Ensure the file exists
@@ -62,7 +58,7 @@ class Test_Image_Processing(unittest.TestCase):
         self.assertIsNotNone(self.image.original_image, f'Failed to load {self.image_path}')
 
         size = self.image.original_image.shape[1::-1]
-        self.assertEqual(size, self.image_size, f'Failed to load {self.image_path}')
+        self.assertEqual(size, tuple(self.image_size), f'Failed to load {self.image_path}')
 
     #######################################################################################################################
 

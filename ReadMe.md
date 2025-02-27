@@ -27,7 +27,7 @@
     If you have already cloned the repository without the `--recurse-submodules` option, it can still be initialized by running:
 
     ```bash
-    git submodule update --remote --merge
+    git submodule update --init --remote --merge
     ```
 
     Or:
