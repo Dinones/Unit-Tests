@@ -112,6 +112,17 @@ class Test_Control_System(unittest.TestCase):
 
     #######################################################################################################################
 
+    def test_is_double_combat_life_box_visible(self):
+        # Test if life box is visible
+        double_combat_life_box_visible = Control_System.is_double_combat_life_box_visible(self.image)
+        self.assertEqual(
+            self.is_double_combat_life_box_visible,
+            double_combat_life_box_visible,
+            'Failed to recognize life box in double combat'
+        )
+
+    #######################################################################################################################
+
     def tearDown(self):
         # Clean up any resources if needed
         pass

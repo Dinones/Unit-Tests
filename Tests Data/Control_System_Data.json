@@ -8,7 +8,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": true,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Regice_Combat_1080p.png",
@@ -19,7 +20,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": true,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Geodude_Combat_1080p.png",
@@ -30,7 +32,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": true,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Starly_Combat_1080p.png",
@@ -41,7 +44,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": true,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Arceus_Cinematics_720p.png",
@@ -52,7 +56,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Combat_Screen_1080p.png",
@@ -63,7 +68,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": true
+        "is_life_box_visible": true,
+        "is_double_combat_life_box_visible": true
     },
     {
         "image_path": "BDSP_Load_Screen_1_1080p.png",
@@ -74,7 +80,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "BDSP_Load_Screen_2_1080p.png",
@@ -85,7 +92,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "BDSP_Load_Screen_3_1080p.png",
@@ -96,7 +104,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Black_Load_Screen_1080p.png",
@@ -107,7 +116,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "White_Load_Screen_1080p.png",
@@ -118,7 +128,8 @@
         "is_load_white_screen_visible": true,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Dialga_Animation_1080p.png",
@@ -129,7 +140,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Pairing_Screen_1080p.png",
@@ -140,7 +152,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Home_Screen_1080p.png",
@@ -151,7 +164,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Overworld_Text_Box_1080p.png",
@@ -162,7 +176,8 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": true,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
     },
     {
         "image_path": "Overworld_Cave_1080p.png",
@@ -173,6 +188,19 @@
         "is_load_white_screen_visible": false,
         "is_combat_text_box_visible": false,
         "is_overworld_text_box_visible": false,
-        "is_life_box_visible": false
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": false
+    },
+    {
+        "image_path": "Double_Combat_1080p.png",
+        "is_pairing_screen_visible": false,
+        "is_home_screen_visible": false,
+        "is_bdsp_load_white_screen_visible": false,
+        "is_load_black_screen_visible": false,
+        "is_load_white_screen_visible": false,
+        "is_combat_text_box_visible": false,
+        "is_overworld_text_box_visible": false,
+        "is_life_box_visible": false,
+        "is_double_combat_life_box_visible": true
     }
 ]
